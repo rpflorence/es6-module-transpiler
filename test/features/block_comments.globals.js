@@ -5,4 +5,4 @@
   import { bazz } from "bazz";
   import { bar } from "bar";
   import { buzz } from "buzz"; */
-})(window.RSVP);
+})(RSVP);
