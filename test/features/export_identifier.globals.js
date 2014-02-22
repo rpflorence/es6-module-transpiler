@@ -3,4 +3,4 @@
   var jQuery = function() { };
 
   __exports__.jQuery = jQuery;
-})(window);
+})((window['lib']||(window['lib']={}))['foo']={});

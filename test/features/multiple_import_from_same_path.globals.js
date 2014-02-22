@@ -2,4 +2,4 @@
   "use strict";
   var uniq = __dependency1__.uniq;
   var forEach = __dependency1__.forEach;
-})(window.utils);
+})(utils);

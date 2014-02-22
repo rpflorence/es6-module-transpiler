@@ -3,4 +3,4 @@
   var get = __dependency1__.get;
   var set = __dependency1__.set;
   var makeDeferred = __dependency2__.defer;
-})(window.Ember, window.RSVP);
+})(Ember, RSVP);
