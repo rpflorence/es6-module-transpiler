@@ -1,8 +1,9 @@
 <%
   function compiler(test) {
+    var name = test.options.moduleName ? "'"+test.options.moduleName+"'" : null;
     return "var compiler = new Compiler(" +
       JSON.stringify(test.source) +
-      ", null, " +
+      ", "+name+", " +
       JSON.stringify(test.options) +
     ");";
   }

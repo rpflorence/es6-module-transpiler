@@ -6691,18 +6691,21 @@ var GlobalsCompiler = function($__super) {
       var dependencyNames = this.dependencyNames;
       var out = "(";
       if (this.exports.length > 0) {
-        if (this.options.into) {
-          out += (this.options.global + "." + this.options.into + " = {}");
-        } else {
-          out += this.options.global;
-        }
+        if (!this.options.namespace) throw new Error('You must provide a namespace for the globals compiler');
+        if (!this.moduleName) throw new Error('You must provide a module name for the globals compiler');
+        var ns = (this.options.global + "['" + this.options.namespace + "']");
+        out += ("(" + ns + "||(" + ns + "={}))['" + this.moduleName + "']={}");
         if (this.dependencyNames.length > 0) {
           out += ', ';
         }
       }
       for (var idx = 0; idx < dependencyNames.length; idx++) {
         var name = dependencyNames[idx];
-        out += ("" + (this.options.imports[name] || name));
+        if (this.options.imports[name]) {
+          out += ("" + (this.options.imports[name] || name));
+        } else {
+          out += ("" + this.options.global[name]);
+        }
         if (!(idx === dependencyNames.length - 1)) out += ", ";
       }
       out += ")";
